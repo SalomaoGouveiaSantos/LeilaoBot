@@ -1,0 +1,8 @@
+if git diff --cached --name-only | grep -E#!/bin/bash
+
+# Bloqueia commits de arquivos sensíveis
+if git diff --cached --name-only | grep -E '\.json$|Credentials|secret|key'; then
+  echo "🚫 Commit bloqueado: arquivo sensível detectado"
+  exit 1
+fi
+
